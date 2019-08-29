@@ -43,6 +43,7 @@ class AppManager extends React.Component {
                 </button>
                 <video id='video' width='100%' height='auto' autoPlay />
                 <canvas id='canvas' />
+                <a id='download' />
             </Fragment>
         );
     }
@@ -65,8 +66,10 @@ class AppManager extends React.Component {
         let canvas = document.getElementById('canvas');
         canvas.width = document.getElementById('video').clientWidth;
         canvas.height = document.getElementById('video').clientHeight;
-        let image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        window.location.href = image;
+        var download = document.getElementById('download');
+        download.setAttribute('download', 'download.png');
+        download.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+        download.click();
     }
 }
 
