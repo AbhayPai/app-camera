@@ -64,9 +64,17 @@ class AppManager extends React.Component {
 
     snapDownloadHandler() {
         let canvas = document.getElementById('canvas');
+        let context = canvas.getContext('2d');
         canvas.width = document.getElementById('video').clientWidth;
         canvas.height = document.getElementById('video').clientHeight;
         var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        context.drawImage(
+            document.getElementById('video'),
+            0,
+            0,
+            document.getElementById('video').clientWidth,
+            document.getElementById('video').clientHeight
+        );
         var download = document.getElementById('download');
         download.setAttribute('download', 'download.png');
         download.setAttribute('href', image);
