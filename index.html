@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Abhay Pai">
+    <meta name="keywords" content="appcamera, abhay, abhaypai, github, reactjs, webpack">
+    <meta name="theme-color" content="#317EFB">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Repository for the App Camera">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./web/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./web/images/favicon.ico" type="image/x-icon">
+    <title>App Camera</title>
+</head>
+<body>
+    <h1>Repository for the App Camera</h1>
+    <a href="./web" title="App Camera" target="_blank">App Camera</a>
+
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="snap">Snap Photo</button>
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    <script type="text/javascript">
+        // Grab elements, create settings, etc.
+        var video = document.getElementById('video');
+
+        // Get access to the camera!
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                //video.src = window.URL.createObjectURL(stream);
+                video.srcObject = stream;
+                video.play();
+            });
+        }
+
+        // Elements for taking the snapshot
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var video = document.getElementById('video');
+
+        // Trigger photo take
+        document.getElementById("snap").addEventListener("click", function() {
+            context.drawImage(video, 0, 0, 640, 480);
+        });
+    </script>
+</body>
+</html>
