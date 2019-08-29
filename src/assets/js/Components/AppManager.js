@@ -67,7 +67,6 @@ class AppManager extends React.Component {
         let context = canvas.getContext('2d');
         canvas.width = document.getElementById('video').clientWidth;
         canvas.height = document.getElementById('video').clientHeight;
-        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         context.drawImage(
             document.getElementById('video'),
             0,
@@ -75,6 +74,7 @@ class AppManager extends React.Component {
             document.getElementById('video').clientWidth,
             document.getElementById('video').clientHeight
         );
+        var image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
         var download = document.getElementById('download');
         download.setAttribute('download', 'download.png');
         download.setAttribute('href', image);
