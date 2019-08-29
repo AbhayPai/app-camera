@@ -45,15 +45,15 @@ class AppManager extends React.Component {
 
     snapHandler() {
         let canvas = document.getElementById('canvas');
-        canvas.width = document.getElementById('video').width;
-        canvas.height = document.getElementById('video').height;
+        canvas.width = document.getElementById('video').clientWidth;
+        canvas.height = document.getElementById('video').clientHeight;
         let context = canvas.getContext('2d');
         context.drawImage(
             document.getElementById('video'),
             0,
             0,
-            document.getElementById('video').width,
-            document.getElementById('video').height
+            document.getElementById('video').clientWidth,
+            document.getElementById('video').clientHeight
         );
     }
 }
