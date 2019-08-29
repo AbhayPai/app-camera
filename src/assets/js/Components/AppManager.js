@@ -66,9 +66,10 @@ class AppManager extends React.Component {
         let canvas = document.getElementById('canvas');
         canvas.width = document.getElementById('video').clientWidth;
         canvas.height = document.getElementById('video').clientHeight;
+        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         var download = document.getElementById('download');
         download.setAttribute('download', 'download.png');
-        download.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+        download.setAttribute('href', image);
         download.click();
     }
 }
