@@ -10,23 +10,16 @@ class AppManager extends React.Component {
     constructor(props) {
         super(props);
         this.snapHandler = this.snapHandler.bind(this);
-        try {
-            this.video = document.getElementById('video');
-            this.video = document.getElementById('video');
-            this.canvas = document.getElementById('canvas');
-            this.context = this.canvas.getContext('2d') || null;
-        } catch(error) {
-            // Do Nothing.
-        }
     }
 
     componentDidMount() {
+        let video = document.getElementById('video');
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true }).
                 then(
                     (stream) => {
-                        this.video.srcObject = stream;
-                        this.video.play();
+                        video.srcObject = stream;
+                        video.play();
                     }
                 );
         }
@@ -51,7 +44,9 @@ class AppManager extends React.Component {
     }
 
     snapHandler() {
-        this.context.drawImage(this.video, 0, 0, 640, 480);
+        let canvas = document.getElementById('canvas');
+        let context = canvas.getContext('2d');
+        context.drawImage(document.getElementById('video'), 0, 0, 640, 480);
     }
 }
 
