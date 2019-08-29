@@ -10,6 +10,7 @@ class AppManager extends React.Component {
     constructor(props) {
         super(props);
         this.snapHandler = this.snapHandler.bind(this);
+        this.snapDownloadHandler = this.snapDownloadHandler.bind(this);
     }
 
     componentDidMount() {
@@ -36,8 +37,11 @@ class AppManager extends React.Component {
         return (
             <Fragment>
                 <h1>Take a Snap!!!</h1>
-                <video id='video' width='100%' height='auto' autoPlay />
                 <button onClick={this.snapHandler}>Snap Photo</button>
+                <button onClick={this.snapDownloadHandler}>
+                    Snap and Download
+                </button>
+                <video id='video' width='100%' height='auto' autoPlay />
                 <canvas id='canvas' />
             </Fragment>
         );
@@ -55,6 +59,14 @@ class AppManager extends React.Component {
             document.getElementById('video').clientWidth,
             document.getElementById('video').clientHeight
         );
+    }
+
+    snapDownloadHandler() {
+        let canvas = document.getElementById('canvas');
+        canvas.width = document.getElementById('video').clientWidth;
+        canvas.height = document.getElementById('video').clientHeight;
+        let image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        window.location.href = image;
     }
 }
 
