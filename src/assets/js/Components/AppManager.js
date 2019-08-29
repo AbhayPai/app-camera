@@ -79,10 +79,6 @@ class AppManager extends React.Component {
         download.setAttribute('download', 'download.png');
         download.setAttribute('href', image);
         download.click();
-        // eslint-disable-next-line
-        console.log(download);
-        // eslint-disable-next-line
-        console.log(image);
     }
 }
 
