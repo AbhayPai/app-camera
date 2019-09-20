@@ -12,6 +12,7 @@ import ReactDOM from 'react-dom';
 /*
  *  All Usable React Reusable Components in this File
  */
+import Navbar from 'ComponentsPath/Navbar';
 import AppManager from 'ComponentsPath/AppManager';
 
 class Index {
@@ -38,7 +39,10 @@ class Index {
     render () {
         if (document.getElementById('app')) {
             ReactDOM.render(
-                <AppManager />,
+                <React.Fragment>
+                    <Navbar />
+                    <AppManager />
+                </React.Fragment>,
                 document.getElementById('app')
             );
         }

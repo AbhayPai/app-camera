@@ -48,8 +48,12 @@
                 "ignoreTemplateLiterals": true
             }
         ],
-        "react/jsx-indent" : [
+        "react/jsx-indent": [
             "error",
+            4
+        ],
+        "react/jsx-indent-props": [
+            2,
             4
         ],
         "no-undef": "error",

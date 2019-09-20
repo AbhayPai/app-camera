@@ -1,7 +1,7 @@
 /*
  *  All Usable Libraries in this File
  */
-import React, { Fragment } from 'react';
+import React from 'react';
 
 /*
  *  Extending React Component
@@ -35,16 +35,22 @@ class AppManager extends React.Component {
          *  @JSX Syntax to display
          */
         return (
-            <Fragment>
+            <div className='container-fluid'>
                 <h1>Take a Snap!!!</h1>
-                <button onClick={this.snapHandler}>Snap Photo</button>
-                <button onClick={this.snapDownloadHandler}>
+                <button onClick={this.snapHandler}
+                    className='btn btn-primary text-white mr-2'
+                >
+                    Snap Photo
+                </button>
+                <button onClick={this.snapDownloadHandler}
+                    className='btn btn-primary text-white'
+                >
                     Snap and Download
                 </button>
                 <video id='video' width='100%' height='auto' autoPlay />
                 <canvas id='canvas' />
                 <a id='download' />
-            </Fragment>
+            </div>
         );
     }
 

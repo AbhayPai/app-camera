@@ -1,6 +1,7 @@
 module.exports = function(config) {
     this.entry = {
         index: config.Path.join(config.Webpack_DIR, 'src/assets/js/Pages/index.js'),
+        vendor: config.Path.join(config.Webpack_DIR, 'src/assets/js/Pages/vendor.js'),
     };
 
     this.alias = {
@@ -11,7 +12,7 @@ module.exports = function(config) {
 
     this.copyFiles = [
         {
-            to: config.Path.join(config.Webpack_DIR, 'web/', 'images/'),
+            to: config.Path.join(config.Webpack_DIR, './', 'images/'),
             from: config.Path.join(config.Webpack_DIR, 'src/assets/images/')
         }
     ];
@@ -36,15 +37,17 @@ module.exports = function(config) {
                 ),
                 filename: config.Path.join(
                     config.Webpack_DIR,
-                    'web/',
+                    './',
                     'index.html'
                 ),
                 assets: {
                     css: [
-                        './css/index.' + config.CustomTimeHash + '.css'
+                        './css/vendor.' + config.CustomTimeHash + '.css',
+                        './css/index.' + config.CustomTimeHash + '.css',
                     ],
                     js: [
-                        './js/index.' + config.CustomTimeHash + '.js'
+                        './js/vendor.' + config.CustomTimeHash + '.js',
+                        './js/index.' + config.CustomTimeHash + '.js',
                     ]
                 }
             }),
